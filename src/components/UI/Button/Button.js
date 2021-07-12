@@ -3,10 +3,12 @@ import React from 'react';
 import classes from './Button.module.css';
 
 const Button = (props) => {
+  console.log("button runnng")
   return (
     <button
       type={props.type || 'button'}
       className={`${classes.button} ${props.className}`}
+      style={props.style}
       onClick={props.onClick}
       disabled={props.disabled}
     >
@@ -15,4 +17,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default React.memo(Button);
