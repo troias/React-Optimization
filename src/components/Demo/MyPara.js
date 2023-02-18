@@ -1,10 +1,7 @@
-import React from 'react'
+import React from "react"
 
- const MyPara = (props) => {
-    console.log("MyPara, app running")
-    return (
-    <p>{props.children}</p>
-    )
+const MyPara = (props) => {
+  return <p>{props.children}</p>
 }
 
 export default React.memo(MyPara)
