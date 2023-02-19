@@ -80,6 +80,7 @@ function App() {
           label="Enter a number"
           value={state.inputValue}
           onChange={inputHandler}
+
         />
         <br />
         <Button onClick={addItemHandler}
@@ -109,8 +110,8 @@ interface MyInputProps {
 
 function MyInput({ label, value, onChange }: MyInputProps) {
   return (
-    <div >
-      <label htmlFor="my-input" className="pt-2">{label}</label>
+    <div className="flex flex-col" >
+      <label htmlFor="my-input" className="pb-2 bg-red-500"  >{label}</label>
       <br />
 
       <input id="my-input" value={value} onChange={onChange} />
