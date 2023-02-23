@@ -1,8 +1,10 @@
 import { useCallback, useMemo, ChangeEvent, useReducer } from "react"
+import React from 'react';
+
 import Button from "./components/UI/Button/Button"
-import DemoOutput from "./components/Demo/DemoOutput"
-import "./App.css"
-import DemoList from "./components/Demo/DemoList"
+
+import  Header from "./components/Header/header"
+
 
 type State = number[]
 
@@ -70,11 +72,61 @@ function App() {
   console.log("App, app running")
 
   return (
-    <div className="app">
-      <h1>Starting Application</h1>
-      <DemoList title={"List"} items={useMemo(() => state.items, [state.items])} />
+    <div className="pl-12 ">
+      {/* <Header/> */}
+      <h1
+      className="text-4xl font-bold text-center"
+      >Starting Application</h1>
 
-      <div>
+      <InputForm state={state} inputHandler={inputHandler} addItemHandler={addItemHandler} removeItemHander={removeItemHander} />
+  
+    </div>
+  )
+}
+
+export default App
+
+interface MyInputProps {
+  label: string
+  value: string
+
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+
+}
+
+function MyInput({ label, value, onChange }: MyInputProps) {
+  return (
+    <div className="" >
+      <label htmlFor="my-input" className=""  >{label}</label>
+      <br />
+
+     
+
+      <input id="my-input" value={value} onChange={onChange} />
+    </div>
+  )
+}
+
+function InputForm ({
+  state,
+  inputHandler,
+  addItemHandler,
+  removeItemHander
+}: {
+  state: AppState
+  inputHandler: (event: ChangeEvent<HTMLInputElement>) => void
+  addItemHandler: () => void
+  removeItemHander: () => void
+
+}) {
+  return (
+    <div>
+          
+
+          <div>
+        <div className="w-24 bg-green-500 h-24">
+          test
+        </div>
         <br />
         <MyInput
           label="Enter a number"
@@ -92,29 +144,6 @@ function App() {
           Reset
         </Button>
       </div>
-
-      <DemoOutput items={state.items} />
-    </div>
-  )
-}
-
-export default App
-
-interface MyInputProps {
-  label: string
-  value: string
-
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
-
-}
-
-function MyInput({ label, value, onChange }: MyInputProps) {
-  return (
-    <div className="flex flex-col" >
-      <label htmlFor="my-input" className="pb-2 bg-red-500"  >{label}</label>
-      <br />
-
-      <input id="my-input" value={value} onChange={onChange} />
     </div>
   )
 }

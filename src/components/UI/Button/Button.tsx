@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useCallback } from "react"
-import classes from "./Button.module.css"
+
 
 type ButtonProps = {
   onClick: () => void,
@@ -30,7 +30,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`${classes.button} ${className}`}
+      className={``}
       onClick={buttonHandler}
       disabled={disabled}
     >
